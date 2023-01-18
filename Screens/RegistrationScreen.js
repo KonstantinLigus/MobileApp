@@ -8,8 +8,10 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  useWindowDimensions,
   View,
 } from "react-native";
+import { useFonts } from "expo-font";
 
 const initFormState = {
   login: "",
@@ -17,52 +19,65 @@ const initFormState = {
   password: "",
 };
 
-const onContainerTouch = () => {
-  Keyboard.dismiss();
-  setIsKeyboardOpen(false);
-};
-
-const onChangeTextOfLoginInput = (value) =>
-  setFormState((prevState) => ({ ...prevState, login: value }));
-
-const onFocusLoginInput = () => {
-  setIsLoginInputFocused(true);
-  setIsKeyboardOpen(true);
-};
-
-const onFocusOfEmailInput = () => {
-  setIsEmailInputFocused(true);
-  setIsKeyboardOpen(true);
-};
-
-const onChangeTextOfEmailInput = (value) =>
-  setFormState((prevState) => ({ ...prevState, email: value }));
-
-const onFocusOfPasswordInput = () => {
-  setIsPasswordInputFocused(true);
-  setIsKeyboardOpen(true);
-};
-
-const onChangeTextOfPasswordInput = (value) =>
-  setFormState((prevState) => ({
-    ...prevState,
-    password: value,
-  }));
-
-const onRegistrationBtnClick = () => {
-  console.log(formState);
-  setFormState(initFormState);
-  Keyboard.dismiss();
-  setIsKeyboardOpen(false);
-};
-
 export default function RegistrationScreen() {
-  [isLoginInputFocused, setIsLoginInputFocused] = useState(false);
-  [isEmailInputFocused, setIsEmailInputFocused] = useState(false);
-  [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
-  [isPasswordHide, setIsPasswordHide] = useState(true);
-  [formState, setFormState] = useState(initFormState);
-  [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+  const [isLoginInputFocused, setIsLoginInputFocused] = useState(false);
+  const [isEmailInputFocused, setIsEmailInputFocused] = useState(false);
+  const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
+  const [isPasswordHide, setIsPasswordHide] = useState(true);
+  const [formState, setFormState] = useState(initFormState);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+  const { width, height } = useWindowDimensions();
+  const [fontsLoaded] = useFonts({
+    "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+  const onContainerTouch = () => {
+    Keyboard.dismiss();
+    setIsKeyboardOpen(false);
+  };
+
+  const onChangeTextOfLoginInput = (value) =>
+    setFormState((prevState) => ({ ...prevState, login: value }));
+
+  const onFocusLoginInput = () => {
+    setIsLoginInputFocused(true);
+    setIsKeyboardOpen(true);
+  };
+
+  const onFocusOfEmailInput = () => {
+    setIsEmailInputFocused(true);
+    setIsKeyboardOpen(true);
+  };
+
+  const onChangeTextOfEmailInput = (value) =>
+    setFormState((prevState) => ({ ...prevState, email: value }));
+
+  const onFocusOfPasswordInput = () => {
+    setIsPasswordInputFocused(true);
+    setIsKeyboardOpen(true);
+  };
+
+  const onChangeTextOfPasswordInput = (value) =>
+    setFormState((prevState) => ({
+      ...prevState,
+      password: value,
+    }));
+
+  const onRegistrationBtnClick = () => {
+    console.log(formState);
+    setFormState(initFormState);
+    Keyboard.dismiss();
+    setIsKeyboardOpen(false);
+  };
+
+  const calculatePaddingBottomForContainer = () => {
+    if (isKeyboardOpen || width > height) {
+      return 20;
+    }
+    return 78;
+  };
 
   return (
     <ImageBackground
@@ -70,7 +85,12 @@ export default function RegistrationScreen() {
       style={styles.bgImage}
     >
       <TouchableWithoutFeedback onPress={onContainerTouch}>
-        <View style={styles.container}>
+        <View
+          style={{
+            ...styles.container,
+            paddingBottom: calculatePaddingBottomForContainer(),
+          }}
+        >
           <View style={styles.userIconWrapper}>
             <TouchableOpacity style={styles.addUserIconBtn}>
               <Image
@@ -183,7 +203,7 @@ const styles = StyleSheet.create({
   },
   formTitle: {
     marginBottom: 33,
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontWeight: "500",
     fontSize: 30,
     lineHeight: 35,
@@ -199,7 +219,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "#E8E8E8",
     backgroundColor: "#F6F6F6",
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     fontWeight: "400",
     fontSize: 16,
     lineHeight: 19,
@@ -212,7 +232,7 @@ const styles = StyleSheet.create({
   showPasswordText: {
     fontSize: 16,
     color: "#1B4371",
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     lineHeight: 19,
     fontWeight: "400",
   },
@@ -227,7 +247,7 @@ const styles = StyleSheet.create({
   registrationText: {
     fontSize: 16,
     color: "#FFFFFF",
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     lineHeight: 19,
   },
   redirectLink: {
@@ -239,7 +259,7 @@ const styles = StyleSheet.create({
   redirectLinkText: {
     fontSize: 16,
     color: "#1B4371",
-    fontFamily: "Roboto",
+    fontFamily: "Roboto-Regular",
     lineHeight: 19,
   },
 });
