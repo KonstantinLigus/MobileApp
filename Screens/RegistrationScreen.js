@@ -12,6 +12,7 @@ import {
   View,
 } from "react-native";
 import { useFonts } from "expo-font";
+import { regScreenStyles } from "../src/styles";
 
 const initFormState = {
   login: "",
@@ -82,28 +83,28 @@ export default function RegistrationScreen() {
   return (
     <ImageBackground
       source={require("../assets/img/photo-bg.png")}
-      style={styles.bgImage}
+      style={regScreenStyles.bgImage}
     >
       <TouchableWithoutFeedback onPress={onContainerTouch}>
         <View
           style={{
-            ...styles.container,
+            ...regScreenStyles.container,
             paddingBottom: calculatePaddingBottomForContainer(),
           }}
         >
-          <View style={styles.userIconWrapper}>
-            <TouchableOpacity style={styles.addUserIconBtn}>
+          <View style={regScreenStyles.userIconWrapper}>
+            <TouchableOpacity style={regScreenStyles.addUserIconBtn}>
               <Image
                 source={require("../assets/img/add.png")}
-                style={styles.addUserIcon}
+                style={regScreenStyles.addUserIcon}
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.form}>
-            <Text style={styles.formTitle}>Регистрация</Text>
+          <View style={regScreenStyles.form}>
+            <Text style={regScreenStyles.formTitle}>Регистрация</Text>
             <TextInput
               style={{
-                ...styles.textInput,
+                ...regScreenStyles.textInput,
                 borderColor: isLoginInputFocused ? "#FF6C00" : "#E8E8E8",
               }}
               placeholder="Логин"
@@ -115,7 +116,7 @@ export default function RegistrationScreen() {
             />
             <TextInput
               style={{
-                ...styles.textInput,
+                ...regScreenStyles.textInput,
                 borderColor: isEmailInputFocused ? "#FF6C00" : "#E8E8E8",
               }}
               placeholder="Адрес электронной почты"
@@ -128,7 +129,7 @@ export default function RegistrationScreen() {
             <View style={{ marginBottom: 43 }}>
               <TextInput
                 style={{
-                  ...styles.textInput,
+                  ...regScreenStyles.textInput,
                   borderColor: isPasswordInputFocused ? "#FF6C00" : "#E8E8E8",
                   marginBottom: 0,
                 }}
@@ -141,22 +142,24 @@ export default function RegistrationScreen() {
                 value={formState.password}
               />
               <TouchableOpacity
-                style={styles.showPasswordBtn}
+                style={regScreenStyles.showPasswordBtn}
                 onPress={() => setIsPasswordHide(!isPasswordHide)}
               >
-                <Text style={styles.showPasswordText}>
+                <Text style={regScreenStyles.showPasswordText}>
                   {isPasswordHide ? "Показать" : "Скрыть"}
                 </Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              style={styles.registrationBtn}
+              style={regScreenStyles.registrationBtn}
               onPress={onRegistrationBtnClick}
             >
-              <Text style={styles.registrationText}>Зарегистрироваться</Text>
+              <Text style={regScreenStyles.registrationText}>
+                Зарегистрироваться
+              </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.redirectLink}>
-              <Text style={styles.redirectLinkText}>
+            <TouchableOpacity style={regScreenStyles.redirectLink}>
+              <Text style={regScreenStyles.redirectLinkText}>
                 Уже есть аккаунт? Войти
               </Text>
             </TouchableOpacity>
@@ -166,100 +169,3 @@ export default function RegistrationScreen() {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    paddingTop: 92,
-    paddingBottom: 78,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    backgroundColor: "#FFFFFF",
-  },
-  bgImage: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-  userIconWrapper: {
-    position: "absolute",
-    top: -60,
-    width: 120,
-    height: 120,
-    borderRadius: 16,
-    backgroundColor: "#F6F6F6",
-  },
-  addUserIconBtn: {
-    position: "absolute",
-    right: -12.5,
-    bottom: 14,
-  },
-  addUserIcon: {
-    width: 25,
-    height: 25,
-  },
-  form: {
-    width: "100%",
-    paddingHorizontal: 16,
-  },
-  formTitle: {
-    marginBottom: 33,
-    fontFamily: "Roboto-Regular",
-    fontWeight: "500",
-    fontSize: 30,
-    lineHeight: 35,
-    textAlign: "center",
-    letterSpacing: 0.16,
-    color: "#212121",
-  },
-  textInput: {
-    height: 50,
-    marginBottom: 16,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: "#E8E8E8",
-    backgroundColor: "#F6F6F6",
-    fontFamily: "Roboto-Regular",
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 19,
-  },
-  showPasswordBtn: {
-    position: "absolute",
-    right: 32,
-    top: 14,
-  },
-  showPasswordText: {
-    fontSize: 16,
-    color: "#1B4371",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-    fontWeight: "400",
-  },
-  registrationBtn: {
-    height: 51,
-    marginBottom: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    backgroundColor: "#FF6C00",
-  },
-  registrationText: {
-    fontSize: 16,
-    color: "#FFFFFF",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-  },
-  redirectLink: {
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    color: "#1B4371",
-  },
-  redirectLinkText: {
-    fontSize: 16,
-    color: "#1B4371",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-  },
-});

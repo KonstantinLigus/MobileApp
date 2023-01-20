@@ -12,6 +12,7 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { logInStyles } from "../src/styles";
 
 const initFormState = {
   login: "",
@@ -75,29 +76,29 @@ export default function LoginScreen() {
   return (
     <ImageBackground
       source={require("../assets/img/photo-bg.png")}
-      style={styles.bgImage}
+      style={logInStyles.bgImage}
     >
       <TouchableWithoutFeedback onPress={onContainerTouch}>
         <View
           style={{
-            ...styles.container,
+            ...logInStyles.container,
             paddingBottom: calculatePaddingBottomForContainer(),
           }}
         >
-          <View style={styles.userIconWrapper}>
-            <TouchableOpacity style={styles.addUserIconBtn}>
+          <View style={logInStyles.userIconWrapper}>
+            <TouchableOpacity style={logInStyles.addUserIconBtn}>
               <Image
                 source={require("../assets/img/add.png")}
-                style={styles.addUserIcon}
+                style={logInStyles.addUserIcon}
               />
             </TouchableOpacity>
           </View>
-          <View style={styles.form}>
-            <Text style={styles.formTitle}>Войти</Text>
+          <View style={logInStyles.form}>
+            <Text style={logInStyles.formTitle}>Войти</Text>
 
             <TextInput
               style={{
-                ...styles.textInput,
+                ...logInStyles.textInput,
                 borderColor: isEmailInputFocused ? "#FF6C00" : "#E8E8E8",
               }}
               placeholder="Адрес электронной почты"
@@ -110,7 +111,7 @@ export default function LoginScreen() {
             <View style={{ marginBottom: 43 }}>
               <TextInput
                 style={{
-                  ...styles.textInput,
+                  ...logInStyles.textInput,
                   borderColor: isPasswordInputFocused ? "#FF6C00" : "#E8E8E8",
                   marginBottom: 0,
                 }}
@@ -123,22 +124,22 @@ export default function LoginScreen() {
                 value={formState.password}
               />
               <TouchableOpacity
-                style={styles.showPasswordBtn}
+                style={logInStyles.showPasswordBtn}
                 onPress={() => setIsPasswordHide(!isPasswordHide)}
               >
-                <Text style={styles.showPasswordText}>
+                <Text style={logInStyles.showPasswordText}>
                   {isPasswordHide ? "Показать" : "Скрыть"}
                 </Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity
-              style={styles.logInBtn}
+              style={logInStyles.logInBtn}
               onPress={() => onLogInBtnClick()}
             >
-              <Text style={styles.logInText}>Войти</Text>
+              <Text style={logInStyles.logInText}>Войти</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.redirectLink}>
-              <Text style={styles.redirectLinkText}>
+            <TouchableOpacity style={logInStyles.redirectLink}>
+              <Text style={logInStyles.redirectLinkText}>
                 Нет аккаунта? Зарегистрироваться
               </Text>
             </TouchableOpacity>
@@ -148,100 +149,3 @@ export default function LoginScreen() {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    paddingTop: 92,
-    paddingBottom: 144,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    backgroundColor: "#FFFFFF",
-  },
-  bgImage: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-  userIconWrapper: {
-    position: "absolute",
-    top: -60,
-    width: 120,
-    height: 120,
-    borderRadius: 16,
-    backgroundColor: "#F6F6F6",
-  },
-  addUserIconBtn: {
-    position: "absolute",
-    right: -12.5,
-    bottom: 14,
-  },
-  addUserIcon: {
-    width: 25,
-    height: 25,
-  },
-  form: {
-    width: "100%",
-    paddingHorizontal: 16,
-  },
-  formTitle: {
-    marginBottom: 33,
-    fontFamily: "Roboto-Regular",
-    fontWeight: "500",
-    fontSize: 30,
-    lineHeight: 35,
-    textAlign: "center",
-    letterSpacing: 0.16,
-    color: "#212121",
-  },
-  textInput: {
-    height: 50,
-    marginBottom: 16,
-    paddingHorizontal: 16,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: "#E8E8E8",
-    backgroundColor: "#F6F6F6",
-    fontFamily: "Roboto-Regular",
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 19,
-  },
-  showPasswordBtn: {
-    position: "absolute",
-    right: 32,
-    top: 14,
-  },
-  showPasswordText: {
-    fontSize: 16,
-    color: "#1B4371",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-    fontWeight: "400",
-  },
-  logInBtn: {
-    height: 51,
-    marginBottom: 16,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    backgroundColor: "#FF6C00",
-  },
-  logInText: {
-    fontSize: 16,
-    color: "#FFFFFF",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-  },
-  redirectLink: {
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    color: "#1B4371",
-  },
-  redirectLinkText: {
-    fontSize: 16,
-    color: "#1B4371",
-    fontFamily: "Roboto-Regular",
-    lineHeight: 19,
-  },
-});
