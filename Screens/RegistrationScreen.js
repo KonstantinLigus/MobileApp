@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import { regScreenStyles } from "../src/styles";
+import SubmitButton from "../components/SubmitButton/SubmitButton";
+import RedirectLink from "../components/RedirectLink/RedirectLink";
 
 const initFormState = {
   login: "",
@@ -150,19 +152,10 @@ export default function RegistrationScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={regScreenStyles.registrationBtn}
-              onPress={onRegistrationBtnClick}
-            >
-              <Text style={regScreenStyles.registrationText}>
-                Зарегистрироваться
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={regScreenStyles.redirectLink}>
-              <Text style={regScreenStyles.redirectLinkText}>
-                Уже есть аккаунт? Войти
-              </Text>
-            </TouchableOpacity>
+            <SubmitButton onPress={onRegistrationBtnClick}>
+              Зарегистрироваться
+            </SubmitButton>
+            <RedirectLink>Уже есть аккаунт? Войти</RedirectLink>
           </View>
         </View>
       </TouchableWithoutFeedback>

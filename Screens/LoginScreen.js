@@ -12,6 +12,8 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import RedirectLink from "../components/RedirectLink/RedirectLink";
+import SubmitButton from "../components/SubmitButton/SubmitButton";
 import { logInStyles } from "../src/styles";
 
 const initFormState = {
@@ -95,7 +97,6 @@ export default function LoginScreen() {
           </View>
           <View style={logInStyles.form}>
             <Text style={logInStyles.formTitle}>Войти</Text>
-
             <TextInput
               style={{
                 ...logInStyles.textInput,
@@ -132,17 +133,8 @@ export default function LoginScreen() {
                 </Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              style={logInStyles.logInBtn}
-              onPress={() => onLogInBtnClick()}
-            >
-              <Text style={logInStyles.logInText}>Войти</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={logInStyles.redirectLink}>
-              <Text style={logInStyles.redirectLinkText}>
-                Нет аккаунта? Зарегистрироваться
-              </Text>
-            </TouchableOpacity>
+            <SubmitButton onPress={onLogInBtnClick}>Войти</SubmitButton>
+            <RedirectLink>Нет аккаунта? Зарегистрироваться</RedirectLink>
           </View>
         </View>
       </TouchableWithoutFeedback>
