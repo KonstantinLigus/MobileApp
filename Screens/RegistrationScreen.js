@@ -3,7 +3,6 @@ import {
   Image,
   ImageBackground,
   Keyboard,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -15,6 +14,7 @@ import { useFonts } from "expo-font";
 import { regScreenStyles } from "../src/styles";
 import SubmitButton from "../components/SubmitButton/SubmitButton";
 import RedirectLink from "../components/RedirectLink/RedirectLink";
+import ScreenWrapper from "../components/ScreenWrapper/ScreenWrapper";
 
 const initFormState = {
   login: "",
@@ -94,14 +94,13 @@ export default function RegistrationScreen() {
             paddingBottom: calculatePaddingBottomForContainer(),
           }}
         >
-          <View style={regScreenStyles.userIconWrapper}>
-            <TouchableOpacity style={regScreenStyles.addUserIconBtn}>
-              <Image
-                source={require("../assets/img/add.png")}
-                style={regScreenStyles.addUserIcon}
-              />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity style={regScreenStyles.userIconWrapper}>
+            <Image
+              source={require("../assets/img/add.png")}
+              style={regScreenStyles.addUserIcon}
+            />
+          </TouchableOpacity>
+          {/* <ScreenWrapper> */}
           <View style={regScreenStyles.form}>
             <Text style={regScreenStyles.formTitle}>Регистрация</Text>
             <TextInput
@@ -157,6 +156,7 @@ export default function RegistrationScreen() {
             </SubmitButton>
             <RedirectLink>Уже есть аккаунт? Войти</RedirectLink>
           </View>
+          {/* </ScreenWrapper> */}
         </View>
       </TouchableWithoutFeedback>
     </ImageBackground>

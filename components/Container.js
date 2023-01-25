@@ -4,9 +4,8 @@ export default function Container(props) {
   return (
     <View
       style={{
-        flex: 1,
         backgroundColor: "#FFFFFF",
-        paddingTop: 32,
+        paddingTop: props.isPaddingTopNone ? 0 : 32,
         paddingHorizontal: 16,
       }}
     >

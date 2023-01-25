@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+export const contentTextCommon = StyleSheet.create({
+  fontFamily: "Roboto-Regular",
+  fontWeight: "400",
+  fontSize: 16,
+  lineHeight: 19,
+  color: "#BDBDBD",
+});
+
 export const regScreenStyles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -21,12 +29,10 @@ export const regScreenStyles = StyleSheet.create({
     borderRadius: 16,
     backgroundColor: "#F6F6F6",
   },
-  addUserIconBtn: {
+  addUserIcon: {
     position: "absolute",
     right: -12.5,
     bottom: 14,
-  },
-  addUserIcon: {
     width: 25,
     height: 25,
   },
@@ -168,46 +174,17 @@ export const logInStyles = StyleSheet.create({
   },
 });
 
-export const postsScreen = StyleSheet.create({
-  setingsWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    position: "absolute",
-    bottom: 0,
-    height: 83,
-    width: "100%",
-    paddingTop: 9,
-    borderWidth: 0,
-    shadowColor: "rgba(0, 0, 0, 0.3)",
-    elevation: 1.1,
-  },
-});
-
 export const createPostsScreen = StyleSheet.create({
-  // dublicate styles with ContentFoto
-  contentText: {
-    fontFamily: "Roboto-Regular",
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 19,
-    color: "#BDBDBD",
-  },
-  // dublicate styles with ContentFoto
-  contentTextWrapper: {
-    marginTop: 32,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  contentTextDecorate: {
-    paddingBottom: 15,
-    borderBottomWidth: 0.5,
-    borderColor: " #E8E8E8",
-  },
   contentPublicateBtn: {
     marginTop: 32,
   },
   contentPublicateText: {
     height: 51,
+    fontFamily: "Roboto-Regular",
+    fontWeight: "400",
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#BDBDBD",
     textAlign: "center",
     textAlignVertical: "center",
     borderWidth: 1,
