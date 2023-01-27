@@ -1,13 +1,11 @@
+import { NavigationContainer } from "@react-navigation/native";
+
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View } from "react-native";
-import CommentsScreen from "./Screens/CommentsScreen";
-import CreatePostsScreen from "./Screens/CreatePostsScreen";
-import LoginScreen from "./Screens/LoginScreen";
-import PostsScreen from "./Screens/PostsScreen";
-import ProfileScreen from "./Screens/ProfileScreen";
-import RegistrationScreen from "./Screens/RegistrationScreen";
+import { useState } from "react";
+import routing from "./routes";
 
 export default function App() {
+  const isAuth = false;
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
   });
@@ -15,5 +13,11 @@ export default function App() {
     return null;
   }
 
-  return <LoginScreen />;
+  return (
+    <NavigationContainer
+      theme={{ colors: { card: "#FFFFFF", border: "#FFFFFF" } }}
+    >
+      {routing(isAuth)}
+    </NavigationContainer>
+  );
 }

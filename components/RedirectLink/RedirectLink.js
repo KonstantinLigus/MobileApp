@@ -1,10 +1,10 @@
 import { Text, TouchableOpacity } from "react-native";
 import { redirectLink } from "./styles";
 
-export default function RedirectLink(props) {
+export default function RedirectLink({ children, onPress }) {
   return (
-    <TouchableOpacity style={redirectLink.redirectLink}>
-      <Text style={redirectLink.redirectLinkText}>{props.children}</Text>
+    <TouchableOpacity style={redirectLink.redirectLink} onPress={onPress}>
+      <Text style={redirectLink.redirectLinkText}>{children}</Text>
     </TouchableOpacity>
   );
 }

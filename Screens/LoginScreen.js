@@ -22,7 +22,7 @@ const initFormState = {
   password: "",
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [isEmailInputFocused, setIsEmailInputFocused] = useState(false);
   const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
   const [isPasswordHide, setIsPasswordHide] = useState(true);
@@ -66,6 +66,7 @@ export default function LoginScreen() {
     setFormState(initFormState);
     Keyboard.dismiss();
     setIsKeyboardOpen(false);
+    navigation.navigate("TabRoute");
   };
 
   const calculatePaddingBottomForContainer = () => {
@@ -74,6 +75,8 @@ export default function LoginScreen() {
     }
     return 144;
   };
+
+  const onRedirectLinkClick = () => navigation.navigate("Register");
 
   return (
     <ImageBackground
@@ -134,7 +137,9 @@ export default function LoginScreen() {
               </TouchableOpacity>
             </View>
             <SubmitButton onPress={onLogInBtnClick}>Войти</SubmitButton>
-            <RedirectLink>Нет аккаунта? Зарегистрироваться</RedirectLink>
+            <RedirectLink onPress={onRedirectLinkClick}>
+              Нет аккаунта? Зарегистрироваться
+            </RedirectLink>
           </View>
         </View>
       </TouchableWithoutFeedback>

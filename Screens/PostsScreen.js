@@ -1,5 +1,13 @@
 import { useFonts } from "expo-font";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Header from "../components/Header/Header";
 import UserIcon from "../components/UserIcon/UserIcon";
 import { postsScreen } from "../src/styles";
@@ -13,9 +21,31 @@ export default function PostsScreen() {
       <Header isOutLogBtn={true}>Публикации</Header>
       <Container>
         <UserIcon />
-        <Post postName={"Name"} commentsAmount={2} location={"Location..."} />
+        <SafeAreaView
+          style={{
+            paddingTop: 32,
+          }}
+        >
+          <ScrollView>
+            <Post
+              isFirstPost={true}
+              postName={"Name"}
+              commentsAmount={2}
+              location={"Location..."}
+            />
+            <Post
+              postName={"Name"}
+              commentsAmount={2}
+              location={"Location..."}
+            />
+            <Post
+              postName={"Name"}
+              commentsAmount={2}
+              location={"Location..."}
+            />
+          </ScrollView>
+        </SafeAreaView>
       </Container>
-      <Footer />
     </>
   );
 }

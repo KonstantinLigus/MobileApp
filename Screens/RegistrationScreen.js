@@ -22,7 +22,7 @@ const initFormState = {
   password: "",
 };
 
-export default function RegistrationScreen() {
+export default function RegistrationScreen({ navigation }) {
   const [isLoginInputFocused, setIsLoginInputFocused] = useState(false);
   const [isEmailInputFocused, setIsEmailInputFocused] = useState(false);
   const [isPasswordInputFocused, setIsPasswordInputFocused] = useState(false);
@@ -73,6 +73,7 @@ export default function RegistrationScreen() {
     setFormState(initFormState);
     Keyboard.dismiss();
     setIsKeyboardOpen(false);
+    navigation.navigate("TabRoute");
   };
 
   const calculatePaddingBottomForContainer = () => {
@@ -81,6 +82,8 @@ export default function RegistrationScreen() {
     }
     return 78;
   };
+
+  const onRedirectLinkClick = () => navigation.navigate("Login");
 
   return (
     <ImageBackground
@@ -154,7 +157,9 @@ export default function RegistrationScreen() {
             <SubmitButton onPress={onRegistrationBtnClick}>
               Зарегистрироваться
             </SubmitButton>
-            <RedirectLink>Уже есть аккаунт? Войти</RedirectLink>
+            <RedirectLink onPress={onRedirectLinkClick}>
+              Уже есть аккаунт? Войти
+            </RedirectLink>
           </View>
           {/* </ScreenWrapper> */}
         </View>

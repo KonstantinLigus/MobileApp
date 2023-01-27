@@ -16,7 +16,6 @@ export default function ProfileScreen() {
           <Post postName={"Name"} commentsAmount={2} location={"Location..."} />
         </Container>
       </ScreenWrapper>
-      <Footer />
     </>
   );
 }
