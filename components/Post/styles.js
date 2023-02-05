@@ -2,17 +2,12 @@ import { StyleSheet } from "react-native";
 import { contentTextCommon } from "../../src/styles";
 
 export const post = StyleSheet.create({
-  postContainer: {
-    paddingVertical: 32,
-  },
   contentFoto: {
     height: 240,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F6F6F6",
-    borderWidth: 1,
     borderRadius: 8,
-    borderColor: "#E8E8E8",
+    overflow: "hidden",
   },
   contentTextName: {
     ...contentTextCommon,
@@ -31,8 +26,12 @@ export const post = StyleSheet.create({
     ...contentTextCommon,
     marginLeft: 6,
   },
+  likesWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 24,
+  },
   contentLocatsNameWrapper: {
-    marginLeft: 49,
     flexDirection: "row",
     alignItems: "center",
     flex: 1,

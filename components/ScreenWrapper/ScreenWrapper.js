@@ -3,6 +3,8 @@ import {
   Image,
   ImageBackground,
   Keyboard,
+  SafeAreaView,
+  ScrollView,
   TouchableOpacity,
   TouchableWithoutFeedback,
   useWindowDimensions,
@@ -65,9 +67,12 @@ export default function ScreenWrapper(props) {
     setIsKeyboardOpen(false);
   };
 
-  const calculatePaddingBottomForContainer = () => {
+  const calculatePaddingBottomForContainer = (isNoPadding) => {
     if (isKeyboardOpen || width > height) {
       return 20;
+    }
+    if (isNoPadding) {
+      return 0;
     }
     return 78;
   };
@@ -81,15 +86,18 @@ export default function ScreenWrapper(props) {
         <View
           style={{
             ...screenWrapper.container,
-            paddingBottom: calculatePaddingBottomForContainer(),
+            flex: 1,
+            paddingBottom: calculatePaddingBottomForContainer(true),
           }}
         >
-          <TouchableOpacity style={screenWrapper.userIconWrapper}>
-            <Image
-              source={require("../../assets/img/add.png")}
-              style={screenWrapper.addUserIcon}
-            />
-          </TouchableOpacity>
+          <View style={screenWrapper.userIconWrapper}>
+            <TouchableOpacity>
+              <Image
+                source={require("../../assets/img/add.png")}
+                style={screenWrapper.addUserIcon}
+              />
+            </TouchableOpacity>
+          </View>
           {props.children}
         </View>
       </TouchableWithoutFeedback>

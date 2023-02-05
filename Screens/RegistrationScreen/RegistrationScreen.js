@@ -10,11 +10,9 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { useFonts } from "expo-font";
-import { regScreenStyles } from "../src/styles";
-import SubmitButton from "../components/SubmitButton/SubmitButton";
-import RedirectLink from "../components/RedirectLink/RedirectLink";
-import ScreenWrapper from "../components/ScreenWrapper/ScreenWrapper";
+import { regScreenStyles } from "./styles";
+import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import RedirectLink from "../../components/RedirectLink/RedirectLink";
 
 const initFormState = {
   login: "",
@@ -30,12 +28,6 @@ export default function RegistrationScreen({ navigation }) {
   const [formState, setFormState] = useState(initFormState);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const { width, height } = useWindowDimensions();
-  const [fontsLoaded] = useFonts({
-    "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
-  });
-  if (!fontsLoaded) {
-    return null;
-  }
   const onContainerTouch = () => {
     Keyboard.dismiss();
     setIsKeyboardOpen(false);
@@ -87,7 +79,7 @@ export default function RegistrationScreen({ navigation }) {
 
   return (
     <ImageBackground
-      source={require("../assets/img/photo-bg.png")}
+      source={require("../../assets/img/photo-bg.png")}
       style={regScreenStyles.bgImage}
     >
       <TouchableWithoutFeedback onPress={onContainerTouch}>
@@ -99,7 +91,7 @@ export default function RegistrationScreen({ navigation }) {
         >
           <TouchableOpacity style={regScreenStyles.userIconWrapper}>
             <Image
-              source={require("../assets/img/add.png")}
+              source={require("../../assets/img/add.png")}
               style={regScreenStyles.addUserIcon}
             />
           </TouchableOpacity>

@@ -1,16 +1,16 @@
 import { Image, TouchableOpacity, View } from "react-native";
-import { footer } from "./styles";
+import { tabBar } from "./styles";
 
-export default function Footer(props) {
+export default function TabBar({ onGridPress, onNewPress, onUserPress }) {
   return (
-    <View style={footer.btnsWrapper}>
-      <TouchableOpacity>
+    <View style={tabBar.btnsWrapper}>
+      <TouchableOpacity onPress={onGridPress}>
         <Image source={require("../../assets/img/grid.png")} />
       </TouchableOpacity>
-      <TouchableOpacity style={{ marginLeft: 31 }}>
+      <TouchableOpacity style={{ marginLeft: 31 }} onPress={onNewPress}>
         <Image source={require("../../assets/img/new.png")} />
       </TouchableOpacity>
-      <TouchableOpacity style={{ marginLeft: 31 }}>
+      <TouchableOpacity style={{ marginLeft: 31 }} onPress={onUserPress}>
         <Image source={require("../../assets/img/user.png")} />
       </TouchableOpacity>
     </View>

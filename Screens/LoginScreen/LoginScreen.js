@@ -12,9 +12,9 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import RedirectLink from "../components/RedirectLink/RedirectLink";
-import SubmitButton from "../components/SubmitButton/SubmitButton";
-import { logInStyles } from "../src/styles";
+import RedirectLink from "../../components/RedirectLink/RedirectLink";
+import SubmitButton from "../../components/SubmitButton/SubmitButton";
+import { logInStyles } from "./styles";
 
 const initFormState = {
   login: "",
@@ -29,13 +29,6 @@ export default function LoginScreen({ navigation }) {
   const [formState, setFormState] = useState(initFormState);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const { width, height } = useWindowDimensions();
-
-  const [fontsLoaded] = useFonts({
-    "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Medium.ttf"),
-  });
-  if (!fontsLoaded) {
-    return null;
-  }
 
   const onContainerTouch = () => {
     Keyboard.dismiss();
@@ -80,7 +73,7 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <ImageBackground
-      source={require("../assets/img/photo-bg.png")}
+      source={require("../../assets/img/photo-bg.png")}
       style={logInStyles.bgImage}
     >
       <TouchableWithoutFeedback onPress={onContainerTouch}>
@@ -93,7 +86,7 @@ export default function LoginScreen({ navigation }) {
           <View style={logInStyles.userIconWrapper}>
             <TouchableOpacity style={logInStyles.addUserIconBtn}>
               <Image
-                source={require("../assets/img/add.png")}
+                source={require("../../assets/img/add.png")}
                 style={logInStyles.addUserIcon}
               />
             </TouchableOpacity>

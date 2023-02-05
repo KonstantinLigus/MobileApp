@@ -1,0 +1,29 @@
+import { useFonts } from "expo-font";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import Container from "../../components/Container";
+import CreatePost from "../../components/CreatePost/CreatePost";
+import Header from "../../components/Header/Header";
+import { contentTextCommon } from "../../src/styles";
+import { createPostsScreen } from "./styles";
+
+export default function CreatePostsScreen() {
+  return (
+    <Container>
+      <CreatePost
+        text={"Загрузите фото"}
+        name={"Название..."}
+        location={"Местность..."}
+      />
+      <TouchableOpacity style={createPostsScreen.contentPublicateBtn}>
+        <Text
+          style={[contentTextCommon, createPostsScreen.contentPublicateText]}
+        >
+          Опубликовать
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={createPostsScreen.contentTrashBtn}>
+        <Image source={require("../../assets/img/trash.png")} />
+      </TouchableOpacity>
+    </Container>
+  );
+}

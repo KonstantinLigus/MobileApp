@@ -1,15 +1,16 @@
 import { View } from "react-native";
 
-export default function Container(props) {
+export default function Container({ isPaddingTopNone, children }) {
   return (
     <View
       style={{
+        flex: 1,
         backgroundColor: "#FFFFFF",
-        paddingTop: props.isPaddingTopNone ? 0 : 32,
+        paddingTop: isPaddingTopNone ? 0 : 32,
         paddingHorizontal: 16,
       }}
     >
-      {props.children}
+      {children}
     </View>
   );
 }

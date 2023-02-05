@@ -1,35 +1,26 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CommentsScreen from "./Screens/CommentsScreen";
-import CreatePostsScreen from "./Screens/CreatePostsScreen";
-import LoginScreen from "./Screens/LoginScreen";
-import PostsScreen from "./Screens/PostsScreen";
-import ProfileScreen from "./Screens/ProfileScreen";
-import RegistrationScreen from "./Screens/RegistrationScreen";
+import CommentsScreen from "./Screens/CommentsScreen/CommentsScreen";
+import CreatePostsScreen from "./Screens/CreatePostsScreen/CreatePostsScreen";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+import PostsScreen from "./Screens/PostsScreen/PostsScreen";
+import ProfileScreen from "./Screens/ProfileScreen/ProfileScreen";
+import RegistrationScreen from "./Screens/RegistrationScreen/RegistrationScreen";
 
-import { Image, TouchableOpacity } from "react-native";
+import TabBar from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import { getHeaderTitle } from "./helpers/getheaderTitle";
+import { getHeadersButtonChoice } from "./helpers/getHeadersButtonChoice";
 
 const AuthStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const AuthRoute = () => (
-  <AuthStack.Navigator>
-    <AuthStack.Screen
-      name="Login"
-      component={LoginScreen}
-      options={{ headerShown: false }}
-    />
-    <AuthStack.Screen
-      name="Register"
-      component={RegistrationScreen}
-      options={{ headerShown: false }}
-    />
-    <AuthStack.Screen
-      name="TabRoute"
-      component={TabRoute}
-      options={{ headerShown: false }}
-    />
+  <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+    <AuthStack.Screen name="Login" component={LoginScreen} />
+    <AuthStack.Screen name="Register" component={RegistrationScreen} />
+    <AuthStack.Screen name="TabRoute" component={TabRoute} />
   </AuthStack.Navigator>
 );
 
@@ -37,57 +28,40 @@ const TabRoute = () => (
   <>
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          alignItems: "center",
-          height: 83,
-          paddingTop: 9,
-          borderTopWidth: 0.5,
-          borderTopColor: "rgba(0, 0, 0, 0.3)",
+        header: ({ route }) => {
+          const title = getHeaderTitle(route.name);
+          const isOutLogBtn = getHeadersButtonChoice.isOutLogBtn(route.name);
+          const isBackArrBtn = getHeadersButtonChoice.isBackArrBtn(route.name);
+          return (
+            <Header
+              headerTitle={title}
+              isOutLogBtn={isOutLogBtn}
+              isBackArrBtn={isBackArrBtn}
+            />
+          );
         },
-        tabBarShowLabel: false,
+      }}
+      tabBar={({ navigation, state }) => {
+        if (state.index === 2) {
+          return null;
+        }
+        return (
+          <TabBar
+            onGridPress={() => navigation.navigate("PostsScreen")}
+            onNewPress={() => navigation.navigate("CreatePostsScreen")}
+            onUserPress={() => navigation.navigate("ProfileScreen")}
+          />
+        );
       }}
     >
-      <Tab.Screen
-        name={"PostsScreen"}
-        component={PostsScreen}
-        options={({ navigation }) => ({
-          tabBarButton: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("PostsScreen")}
-            >
-              <Image source={require("./assets/img/grid.png")} />
-            </TouchableOpacity>
-          ),
-        })}
-      />
-      <Tab.Screen
-        name={"CreatePostsScreen"}
-        component={CreatePostsScreen}
-        options={({ navigation }) => ({
-          tabBarButton: () => (
-            <TouchableOpacity
-              style={{ marginLeft: 31 }}
-              onPress={() => navigation.navigate("CreatePostsScreen")}
-            >
-              <Image source={require("./assets/img/new.png")} />
-            </TouchableOpacity>
-          ),
-        })}
-      />
+      <Tab.Screen name={"PostsScreen"} component={PostsScreen} />
+      <Tab.Screen name={"CreatePostsScreen"} component={CreatePostsScreen} />
       <Tab.Screen
         name={"ProfileScreen"}
         component={ProfileScreen}
-        options={({ navigation }) => ({
-          tabBarButton: () => (
-            <TouchableOpacity
-              style={{ marginLeft: 31 }}
-              onPress={() => navigation.navigate("ProfileScreen")}
-            >
-              <Image source={require("./assets/img/user.png")} />
-            </TouchableOpacity>
-          ),
-        })}
+        options={{
+          headerShown: false,
+        }}
       />
     </Tab.Navigator>
   </>

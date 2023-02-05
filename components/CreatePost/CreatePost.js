@@ -9,7 +9,7 @@ import { createPost } from "./styles";
 
 export default function CreatePost(props) {
   return (
-    <>
+    <View>
       <ImageBackground style={createPost.contentFoto}>
         <TouchableOpacity>
           <Image source={require("../../assets/img/camera.png")} />
@@ -27,6 +27,6 @@ export default function CreatePost(props) {
           <Text style={createPost.contentLocatsName}>Местность...</Text>
         </View>
       )}
-    </>
+    </View>
   );
 }

@@ -5,7 +5,7 @@ import { useState } from "react";
 import routing from "./routes";
 
 export default function App() {
-  const isAuth = false;
+  const [isAuth, setIsAuth] = useState(true);
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
   });

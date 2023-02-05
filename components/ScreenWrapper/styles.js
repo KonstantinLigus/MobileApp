@@ -4,6 +4,7 @@ export const screenWrapper = StyleSheet.create({
   bgImage: {
     flex: 1,
     justifyContent: "flex-end",
+    paddingTop: 119,
   },
   container: {
     // alignItems: "center",
@@ -26,7 +27,7 @@ export const screenWrapper = StyleSheet.create({
   addUserIcon: {
     position: "absolute",
     right: -12.5,
-    bottom: 14,
+    bottom: -100,
     width: 25,
     height: 25,
   },
