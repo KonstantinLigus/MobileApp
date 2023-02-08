@@ -1,12 +1,12 @@
 import { FlatList, SafeAreaView, View } from "react-native";
-import UserIcon from "../../components/UserIcon/UserIcon";
-import Container from "../../components/Container";
-import Post from "../../components/Post/Post";
-import { users } from "../../src/users";
+import UserIcon from "../../../components/UserIcon/UserIcon";
+import Container from "../../../components/Container";
+import Post from "../../../components/Post/Post";
+import { users } from "../../../src/users";
 
 const posts = users[0].posts;
 
-export default function PostsScreen() {
+export default function PostsDafaultScreen() {
   return (
     <Container>
       <UserIcon userName={users[0].user} userEmail={users[0].email} />

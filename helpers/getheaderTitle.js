@@ -1,10 +1,13 @@
 export const getHeaderTitle = (routeName) => {
   switch (routeName) {
-    case "PostsScreen":
+    case "PostsDafaultScreen":
       return "Публикации";
       break;
-    case "CreatePostsScreen":
-      return "Создать публикацию";
+    case "CommentsScreen":
+      return "Комментарии";
+      break;
+    case "MapScreen":
+      return "Карты";
       break;
     default:
       return "";

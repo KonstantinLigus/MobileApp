@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { contentTextCommon } from "../../src/styles";
+import { contentTextCommon } from "../../src/commonStyles";
 
 export const createPost = StyleSheet.create({
   contentFoto: {
@@ -12,8 +12,8 @@ export const createPost = StyleSheet.create({
     borderColor: "#E8E8E8",
   },
   contentTextName: {
-    marginTop: 8,
     ...contentTextCommon,
+    marginTop: 8,
   },
   contentNamesFoto: {
     marginTop: 48,
@@ -35,7 +35,7 @@ export const createPost = StyleSheet.create({
     borderColor: " #E8E8E8",
   },
   contentLocatsName: {
-    marginLeft: 8,
     ...contentTextCommon,
+    marginLeft: 8,
   },
 });

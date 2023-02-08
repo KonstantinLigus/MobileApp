@@ -1,5 +1,4 @@
 import { Text, TouchableOpacity } from "react-native";
-import { regScreenStyles } from "../../src/styles";
 import { submitButton } from "./styles";
 
 export default function SubmitButton(props) {

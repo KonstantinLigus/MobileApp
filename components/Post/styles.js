@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
-import { contentTextCommon } from "../../src/styles";
+import { contentTextCommon } from "../../src/commonStyles";
 
 export const post = StyleSheet.create({
   contentFoto: {
+    width: "100%",
     height: 240,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
-    overflow: "hidden",
   },
   contentTextName: {
     ...contentTextCommon,

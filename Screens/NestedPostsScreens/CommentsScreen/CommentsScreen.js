@@ -1,15 +1,17 @@
-import { View } from "react-native";
-import Comment from "../../components/Commment/Comment";
-import Container from "../../components/Container";
-import CreatePost from "../../components/CreatePost/CreatePost";
-import Header from "../../components/Header/Header";
+import { Image, ImageBackground, TouchableOpacity, View } from "react-native";
+import Comment from "../../../components/Commment/Comment";
+import Container from "../../../components/Container";
+import { commentsScreen } from "./style";
 
 export default function CommentsScreen() {
   return (
     <>
-      <Header isBackArrBtn={true}>Комментарии</Header>
       <Container>
-        <CreatePost />
+        <ImageBackground style={commentsScreen.contentFoto}>
+          <TouchableOpacity>
+            <Image source={require("../../../assets/img/camera.png")} />
+          </TouchableOpacity>
+        </ImageBackground>
         <View style={{ marginTop: 32 }}>
           <Comment
             commentText={

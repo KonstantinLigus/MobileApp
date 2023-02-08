@@ -1,7 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { header } from "./styles";
 
 export default function Header({ headerTitle, isOutLogBtn, isBackArrBtn }) {
+  const navigation = useNavigation();
   return (
     <View style={header.titleWrapper}>
       <Text style={header.title}>{headerTitle}</Text>
@@ -11,7 +13,10 @@ export default function Header({ headerTitle, isOutLogBtn, isBackArrBtn }) {
         </TouchableOpacity>
       )}
       {isBackArrBtn && (
-        <TouchableOpacity style={header.backArrBtn}>
+        <TouchableOpacity
+          style={header.backArrBtn}
+          onPress={() => navigation.goBack()}
+        >
           <Image source={require("../../assets/img/arrow-left.png")} />
         </TouchableOpacity>
       )}

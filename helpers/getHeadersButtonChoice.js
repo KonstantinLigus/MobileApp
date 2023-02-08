@@ -1,7 +1,7 @@
 export const getHeadersButtonChoice = {
   isOutLogBtn: (routeName) => {
     switch (routeName) {
-      case "PostsScreen":
+      case "PostsDafaultScreen":
         return true;
         break;
       default:
@@ -12,6 +12,12 @@ export const getHeadersButtonChoice = {
   isBackArrBtn: (routeName) => {
     switch (routeName) {
       case "CreatePostsScreen":
+        return true;
+        break;
+      case "CommentsScreen":
+        return true;
+        break;
+      case "MapScreen":
         return true;
         break;
       default:

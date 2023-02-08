@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import {
   Image,
   ImageBackground,
@@ -14,12 +15,16 @@ export default function Post({
   likes,
   pathOfContentFoto,
 }) {
+  const navigation = useNavigation();
   return (
     <View>
-      <ImageBackground source={pathOfContentFoto} style={post.contentFoto} />
+      <Image source={pathOfContentFoto} style={post.contentFoto} />
       <Text style={post.contentTextName}>{postName}</Text>
       <View style={post.infoWrapper}>
-        <View style={post.commentWrapper}>
+        <TouchableOpacity
+          style={post.commentWrapper}
+          onPress={() => navigation.navigate("CommentsScreen")}
+        >
           <Image source={require("../../assets/img/message-circle.png")} />
           <Text
             style={
@@ -30,7 +35,7 @@ export default function Post({
           >
             {commentsAmount}
           </Text>
-        </View>
+        </TouchableOpacity>
         <View style={post.likesWrapper}>
           <Image source={require("../../assets/img/thumbs-up.png")} />
           <Text
@@ -43,10 +48,13 @@ export default function Post({
             {likes}
           </Text>
         </View>
-        <View style={post.contentLocatsNameWrapper}>
+        <TouchableOpacity
+          style={post.contentLocatsNameWrapper}
+          onPress={() => navigation.navigate("MapScreen")}
+        >
           <Image source={require("../../assets/img/map-pin.png")} />
           <Text style={post.contentLocatsName}>{location}</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { contentTextCommon } from "../../src/styles";
+import { contentTextCommon } from "../../src/commonStyles";
 
 export const comment = StyleSheet.create({
   commentWrapper: {

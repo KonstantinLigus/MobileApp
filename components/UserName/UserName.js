@@ -1,5 +1,5 @@
 import { Text } from "react-native";
-import { contentTextCommon } from "../../src/styles";
+import { contentTextCommon } from "../../src/commonStyles";
 
 export default function UserName(props) {
   return (

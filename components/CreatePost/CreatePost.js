@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { createPost } from "./styles";
 
-export default function CreatePost(props) {
+export default function CreatePost({ name, location }) {
   return (
     <View>
       <ImageBackground style={createPost.contentFoto}>
@@ -15,16 +15,12 @@ export default function CreatePost(props) {
           <Image source={require("../../assets/img/camera.png")} />
         </TouchableOpacity>
       </ImageBackground>
-      {props.text && (
-        <Text style={createPost.contentTextName}>{props.text}</Text>
-      )}
-      {props.name && (
-        <Text style={createPost.contentNamesFoto}>{props.name}</Text>
-      )}
-      {props.location && (
+      <Text style={createPost.contentTextName}>Загрузите фото</Text>
+      {name && <Text style={createPost.contentNamesFoto}>{name}</Text>}
+      {location && (
         <View style={createPost.contentLocatsNameWrapper}>
           <Image source={require("../../assets/img/map-pin.png")} />
-          <Text style={createPost.contentLocatsName}>Местность...</Text>
+          <Text style={createPost.contentLocatsName}>{location}</Text>
         </View>
       )}
     </View>

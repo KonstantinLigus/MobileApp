@@ -7,7 +7,7 @@ import {
   View,
 } from "react-native";
 import Container from "../../components/Container";
-import TabBar from "../../components/Footer/Footer";
+import TabBar from "../../components/Footer/TabBar";
 import Post from "../../components/Post/Post";
 import ScreenWrapper from "../../components/ScreenWrapper/ScreenWrapper";
 import { screenWrapper } from "../../components/ScreenWrapper/styles";
